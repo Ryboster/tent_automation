@@ -1,7 +1,6 @@
 import serial
 import time
 import subprocess
-import re
 import json
 
 
