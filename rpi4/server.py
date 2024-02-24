@@ -15,8 +15,8 @@ class Server(SocketIO, Receiver):
         
         
     @app.route("/", methods=["GET", "POST"])
-    def home(self):
-        data = self.get_data()
+    def home():
+        data = Server.get_data()
         if data:
             temperature = data['temperature']
             humidity = data['humidity']
@@ -32,7 +32,7 @@ class Server(SocketIO, Receiver):
     
 
     @socketio.on('connect')
-    def handle_connection(self):
+    def handle_connection():
         print('Socket connected')
         socketio.start_background_task(self.emit_data)
         #socketio.start_background_task(emit_video)
