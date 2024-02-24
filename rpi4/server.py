@@ -8,9 +8,11 @@ from receiver import Receiver
 app = Flask(__name__)
 socketio = SocketIO(app)
 
-class Server(socketio.server, Receiver):
+class Server(SocketIO, Receiver):
     def __init__(self):
+        super().__init__(app)
         self.Receiver.__init__()
+        
         
     @app.route("/", methods=["GET", "POST"])
     def home(self):
@@ -45,6 +47,7 @@ class Server(socketio.server, Receiver):
                 socketio.emit('update', {'temperature': temperature,
                                          'humidity': humidity})
             time.sleep(2)
+
 
 
 if __name__ == "__main__":
