@@ -11,7 +11,7 @@ socketio = SocketIO(app)
 class Server(SocketIO, Receiver):
     def __init__(self):
         super().__init__(app)
-        Receiver.__init__()
+        Receiver.__init__(self)
         
         
     @app.route("/", methods=["GET", "POST"])
