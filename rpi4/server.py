@@ -8,7 +8,7 @@ from receiver import Receiver
 app = Flask(__name__)
 socketio = SocketIO(app)
 
-class Server(socketio.Server, Receiver):
+class Server(socketio.server, Receiver):
     def __init__(self):
         self.Receiver.__init__()
         
