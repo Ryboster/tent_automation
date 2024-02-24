@@ -16,7 +16,7 @@ class Server(SocketIO, Receiver):
         
     @app.route("/", methods=["GET", "POST"])
     def home():
-        data = Server.get_data()
+        data = Receiver().get_data()
         if data:
             temperature = data['temperature']
             humidity = data['humidity']
